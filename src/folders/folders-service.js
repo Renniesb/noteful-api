@@ -10,7 +10,7 @@ const FoldersService = {
       .insert(newFolder)
       .into("noteful_folders")
       .returning("*")
-      .then((row) => {
+      .then((rows) => {
         return rows[0];
       });
   },
