@@ -42,9 +42,9 @@ foldersRouter
   });
 
 foldersRouter
-  .route("/:folderId")
+  .route("/:folderid")
   .all((req, res, next) => {
-    FoldersService.getById(req.app.get("db"), req.params.folderId)
+    FoldersService.getById(req.app.get("db"), req.params.folderid)
       .then((folder) => {
         if (!folder) {
           return res.status(404).json({
@@ -60,7 +60,7 @@ foldersRouter
     res.json(serializeFolder(res.folder));
   })
   .delete((req, res, next) => {
-    FoldersService.deleteFolder(req.app.get("db"), req.params.folderId)
+    FoldersService.deleteFolder(req.app.get("db"), req.params.folderid)
       .then((numRowsAffected) => {
         res.status(204).end;
       })
